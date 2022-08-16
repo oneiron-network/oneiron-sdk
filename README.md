@@ -30,8 +30,8 @@ with the [Cosmos Network](https://cosmos.network) and blockchains in the Cosmos 
 
 ## Current Scope
 
-The scope of the current phase is to build the first approximation of our sidechain SDK, capable of creating _
-single-node_ Cardano sidechains. Users will still be able to:
+The scope of the current phase is to build the first approximation of our sidechain SDK, capable of creating 
+_single-node_ Cardano sidechains. Users will still be able to:
 
 - easily install the SDK,
 - create their own (single-node, but still real) Cardano sidechain, capable of running smart-contracts on a JVM-based
