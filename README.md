@@ -39,3 +39,7 @@ _single-node_ Cardano sidechains. Users will still be able to:
 - begin development in the language of their choice and run their apps on the sidechain.
 
 Creating and/or joining multi-node sidechains will be a subject of a future development phase.
+
+## Design
+
+See [Design](./design).
