@@ -9,23 +9,30 @@ _Connected_ (or _dependent_) transactions happening on the sidechain incremental
 
 > Note: Dependent transactions are, of course, connected via UTXOs: a spending transaction refers to outputs of previous transactions.
 
-The summary transaction is built until it reaches Cardano max tx size or certain time duration elapses.
+Summary transactions are built until they reach Cardano max tx size or within a time interval of the sidechain "epoch".
 
-Summary transactions can be bundled together up to the max tx size on Cardano.
+For efficiency, summary transactions can be bundled together, up to the max tx size on Cardano, when being submitted to L1.
 
 ## Summary Transaction Validation
 
-### Certification Phase
+### Proof
 
-Summary transaction hash set is published by a sidechain node on L1, as a datum in an output locking the sidechain nodes' stakes until all summary transactions in the set are posted to L1 or canceled (by users withdrawing their assets from the gate script).
+zk-SNARK proofs are produced for summary transactions by sidechain nodes. This is computationally intensive process, so verified valid proofs (i.e. successfully submitted and verified by the gate script on L1) are rewarded with the sidechain utility token.
 
-This certification tx is built off-chain by running a consensus among the sidechain nodes, each of them contributing their data to the tx: inputs and locked output, as well as signature.
-
-Only one such certified summary tx set is possible per sidechain "epoch".
-
-If a node wants to replace the summary tx set, it needs to lock equal or larger stake, making it too expensive for a malicious node to succeed (as it will have to lock more than all honest participants).
-
-### Commit Phase
+### Verification
 
 Any participant may submit summary transactions, and they may be batched (up to tx size limit).
-A summary transaction is valid if its inputs are unspent and its hash is included in the summary tx hash set posted by the certification tx.
+
+A zk-SNARK proof of validity is submitted for each summary transaction (as a redeemer) along with the summary transactions. 
+
+A summary transaction is valid if its inputs are unspent on the L1 and its hash is verified by the provided SNARK proof.
+
+### zk-SNARK Algorithm Used
+
+This is currently the subject of focus of the project founder. Considered candidates are:
+
+- PLONK
+- Marlin
+- Groth16
+
+The most important requirement is feasibility of implementation in Plutus, which implies the proof size must be small, and verification must be very fast.

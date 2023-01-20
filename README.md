@@ -1,10 +1,9 @@
-# oneiron-sdk
 
-**Oneiron**: a Cardano Sidechain SDK
+# Oneiron: Cardano Sidechain Development Kit
 
 ## Vision
 
-We’re building Oneiron SDK — an open-source JVM-based [Cardano](https://cardano.org) Sidechain SDK. Our goal is to
+We’re building Oneiron SDK — open-source JVM-based [Cardano](https://cardano.org) Sidechain Development Kit. Our goal is to
 enable developers, already familiar with enterprise/web technologies, to create
 Cardano [sidechains](https://eprint.iacr.org/2018/1239.pdf) and applications quickly and easily.
 
